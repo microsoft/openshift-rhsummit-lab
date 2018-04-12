@@ -107,6 +107,6 @@ through the idea of Resource Groups.
 sure about deleting it, then click Delete.
 1. You're done with the Prework! 
 
-__*Stop here now that you're done the Prework. Everything that follows below will
+__*Stop here now that you're done the Prework. Everything that follows will
 be completed during the Red Hat Summit Lab itself.*__
 ---
