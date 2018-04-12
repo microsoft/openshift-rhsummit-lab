@@ -4,6 +4,6 @@
 >
 > Full completion of this prework is necessary not only to gain basic experience with Azure, but to ensure that the time-consuming "first run" processes happen for your Azure account before the lab and not during the lab. <a href="mailto:openshiftrunsonazure@microsoft.com?Subject=Prework question">Contact us</a> if you have any issues completing pre-work steps.
 
-## [Part 0: Pre-work, Getting an Azure Subscription](Part0.md) 
+## [Part 0: Pre-work, Getting an Azure Subscription](Part0.md)
 
 ## [Part 1: Using Azure to deploy OpenShift Origin](Part1.md)

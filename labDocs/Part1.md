@@ -2,14 +2,17 @@
 ### 1.0: Open cloud shell and log in with your Azure account you created in the Prework
 In case you forgot, here's a helpful link: (https://shell.azure.com)
 
-### 1.1: Create a new Resource Group with `azure group create`
+### 1.1: Create a new Resource Group with `az group create`
 This resource group will be used to host your Azure key vault. You will deploy a
 separate resource group for your OpenShift cluster resources.
 ```bash
-> azure group create --name <KEYVAULT_RESOURCE_GROUP_NAME> --location westus2
+> az group create --name <KEYVAULT_RESOURCE_GROUP_NAME> --location westus2
 ```
-**Pro Tip:** You can be even lazier with what you type by typing `az` instead of `azure`.
-The rest of this guide will use `az` instead of `azure` for Azure CLI commands.
+**Pro Tip:** You can be even lazier with what you type in the CLI. Examples include:
+  1. The `--name` argument can be shortened to just `-n`
+  1. The `--resource-group` argument can be shortened to just `-g`
+  1. The `--location` argument can be shortened to just `-l`
+
 
 ### 1.2: Get your subscription's SubscriptionId with `az account list`
 ```bash
@@ -29,22 +32,22 @@ pair is saved (probably ~/.ssh/).
     --name <YOUR_NAME_HERE> \
     --password <YOUR_PASSWORD_HERE> \
     --role contributor \
-    --scopes /subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME> 
+    --scopes /subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>
 ```
 Your output will look something like this:
 ```json
 {
-  "appId": "11111111-abcd-1234-efgh-111111111111",            
+  "appId": "11111111-abcd-1234-efgh-111111111111",
   "displayName": "<YOUR_NAME_HERE>",
   "name": "http://<YOUR_NAME_HERE>",
   "password": <YOUR_PASSWORD_HERE>,
   "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 }
 ```
-**Notes:**  
+**Notes:**
   * Azure CLI commands are sorted hierarchically. In this case, `az ad sp create-for-rbac`
   expands to "Azure -> Active Directory -> Service Principal -> Create for Role-
-  Based Access". 
+  Based Access".
   * Your SubscriptionId can be found with `az account list` (from above).
   * Your Resource Group name can be found with `az group list`.
   * The final `scopes` argument limits the scope of the Service Principal to the
@@ -66,7 +69,7 @@ The OpenShift deployment uses the SSH key you created to secure access to the Op
 > az keyvault secret set \
     --vault-name <KEYVAULT_NAME> \
     -- name <SECRET_NAME> \
-    --file <PATH_TO_SSH_PRIVATE_KEY> 
+    --file <PATH_TO_SSH_PRIVATE_KEY>
 ```
 **Note:**
   * The path to your SSH private key is probably ~/.ssh/id_rsa
@@ -98,11 +101,11 @@ to a 10 core constraint in the Azure Pass. The bulk of our editing work will be
 in `azuredeploy.parameters.local.json`. There are a number of fields tagged with
 a "changeme" string that will need to be edited.
     #### Changes required for `azuredeploy.local.json`:
-    ```json
+    ```bash
     "masterInstanceCount": {
         "type": "int",
         "defaultValue": 3,
-        "allowedValues": [1,5],
+        "allowedValues": [1,5],   # Change from [3,5] to [1,5]
         "metadata": {
             "description": "Number of OpenShift masters."
         }
@@ -110,7 +113,7 @@ a "changeme" string that will need to be edited.
     "infraInstanceCount": {
         "type": "int",
         "defaultValue": 2,
-        "allowedValues": [1,3],
+        "allowedValues": [1,3],   # Change from [2,3] to [1,3]
         "metadata": {
             "description": "Number of OpenShift infra nodes."                                                            }
     },
@@ -119,8 +122,118 @@ a "changeme" string that will need to be edited.
         "defaultValue": 2,
         "minValue": 1,
         "allowedValues": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,  20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
-        "metadata": {                                                       
+        "metadata": {
             "description": "Number of OpenShift nodes"
         }
     }
     ```
+
+    #### Changes required for `azuredeploy.parameters.local.json`:
+    ```bash
+    {
+      "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+          "_artifactsLocation": {
+              "value": "https://raw.githubusercontent.com/Microsoft/openshift-origin/master/"
+          },
+          "masterVmSize": {
+              "value": "Standard_DS2_v2"
+          },
+          "infraVmSize": {
+              "value": "Standard_DS2_v2"
+          },
+          "nodeVmSize": {
+              "value": "Standard_DS2_v2"
+          },
+          "storageKind": {
+              "value": "managed"
+          },
+          "openshiftClusterPrefix": {
+              "value": "changeme"     # Your cluster name here
+          },
+          "masterInstanceCount": {
+              "value": 1              # Change from 3 to 1
+          },
+          "infraInstanceCount": {
+              "value": 1              # Change from 2 to 1
+          },
+          "nodeInstanceCount": {
+              "value": 2              # Change from 1 to 2
+          },
+          "dataDiskSize": {
+              "value": 128
+          },
+          "adminUsername": {
+              "value": "changeme"     # Your admin name here
+          },
+          "openshiftPassword": {
+              "value": "changeme"     # Your password here
+          },
+          "enableMetrics": {
+              "value": "false"
+          },
+          "enableLogging": {
+              "value": "false"
+          },
+          "enableCockpit": {
+              "value": "false"
+          },
+          "sshPublicKey": {
+              "value": "changeme"     # Add your SSH public key here
+          },
+          "keyVaultResourceGroup": {
+              "value": "changeme"     # Add your Key Vault resource group nanme here
+          },
+          "keyVaultName": {
+              "value": "changeme"     # Add the name of your Key Vault here
+          },
+          "keyVaultSecret": {
+              "value": "changeme"     # Add the name of your  Key Vault Secret here
+          },
+          "enableAzure": {
+              "value": "true"         # Change this from false to true
+          },
+          "aadClientId": {
+              "value": "changeme"     # Add the AppId you saved from earlier here
+          },
+          "aadClientSecret": {
+              "value": "changeme"     # Add the password for your AAD Service Principal here
+          },
+          "defaultSubDomainType": {
+              "value": "nipio"
+          },
+          "defaultSubDomain": {
+              "value": "changeme"     # If you selected nipio above, this will be ignored
+          }
+      }
+    }
+
+    ```
+
+### 1.8: Deploy OpenShift!
+Use the Azure Resource Manager group deployment command:
+  ```bash
+  > az group deployment create \
+    --resource-group <YOUR_RESOURCE_GROUP_HERE> \
+    --template-file azuredeploy.local.json \
+    --parameters @azuredeploy.parameters.local.json
+  ```
+You are now complete this part of the lab. Deployment will take anywhere between
+25-40 minutes, so you may now continue onto the next part of this lab.The URL of
+the OpenShift console and the DNS name of the OpenShift master prints to the
+terminal when the deployment finishes:
+
+  ```json
+  {
+    "OpenShift Console Uri": "http://openshiftlb.cloudapp.azure.com:8443/console",
+    "OpenShift Master SSH": "ssh clusteradmin@myopenshiftmaster.cloudapp.azure.com -p 2200"
+  }
+  ```
+If you lose this output, you can always retrieve the URL with the following:
+ ```
+    > az group deployment list \
+      --resource-group <YOUR_RESOURCE_GROUP_HERE>
+      --query [].properties.outputs \
+      --output=json
+  ```
