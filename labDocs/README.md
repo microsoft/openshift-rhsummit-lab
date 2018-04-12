@@ -7,3 +7,11 @@
 ## [Part 0: Pre-work, Getting an Azure Subscription](Part0.md) 
 
 ## [Part 1: Using Azure to deploy OpenShift Origin](Part1.md)
+
+## [Part 2: Using OpenShift on Azure](Part2.md)
+
+## [Part 3: Advanced OpenShift topics](Part3.md)
+Azure AD, Open Service Brokers
+
+## [Resources](Resources.md)
+
