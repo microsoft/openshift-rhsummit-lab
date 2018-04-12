@@ -29,7 +29,7 @@ pair is saved (probably ~/.ssh/).
 ### 1.4: Create your Azure Service Principal
 ```bash
 > az ad sp create-for-rbac \
-    --name <YOUR_NAME_HERE> \
+    --name <YOUR_SERVICE_PRINCIPAL_NAME> \
     --password <YOUR_PASSWORD_HERE> \
     --role contributor \
     --scopes /subscriptions/<YOUR_SUBSCRIPTION_ID>/resourceGroups/<YOUR_RESOURCE_GROUP_NAME>
@@ -40,7 +40,7 @@ Your output will look something like this:
   "appId": "11111111-abcd-1234-efgh-111111111111",
   "displayName": "<YOUR_NAME_HERE>",
   "name": "http://<YOUR_NAME_HERE>",
-  "password": <YOUR_PASSWORD_HERE>,
+  "password": "<YOUR_PASSWORD_HERE>",
   "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
 }
 ```
