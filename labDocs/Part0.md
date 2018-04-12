@@ -67,10 +67,17 @@ properly before the lab. This should take no longer than a few minutes. Begin by
 navigating to (https://portal.azure.com).
 
 1. Click on "Create a resource" in the top left corner of the Portal
+
+    ![Azure Portal Create a resource](screenshots/0.4.1.png)
+
 1. Search for "RHEL 7.4" in the search box
 1. Select "Red Hat Enterprise Linux 7.4"
+![RHEL 7.4](screenshots/0.4.3.png)
 1. In the dropdown, select "Resource Manager" as the deployment model. You will
 be taken to the Create virtual machine options
+
+    ![Resource Manager](screenshots/0.4.4.png)
+
 1. In the "Configure basic settings" step, enter the following:
     1. Name: Any arbitrary name
     1. User name: Any arbitrary username
@@ -80,10 +87,16 @@ be taken to the Create virtual machine options
     1. Resource group: Choose "Create new", and give it any arbitrary name
     1. Location: West US 2
     1. Click "OK"
+
+    ![Configure basic settings](screenshots/0.4.5.png)
+
 1. In the "Choose a size" step, choose B1s as your VM size (you are free to
 spin up a larger VM size, but please note that this might mean that you don't
 have enough remaining credits to do the actual lab). Once you have selected B1s,
 click the "Select" button.
+
+    ![VM Size](screenshots/0.4.6.png)
+
 1. In the "Configure optional features" step, you don't have to change anything.
 Read it over if you would like, and click "OK".
 1. In the Summary step, you can view a summary of the VM you are about to spin up.
@@ -91,6 +104,9 @@ Have a look and ensure you like what you see, then click "Create". Creation will
 only take a few minutes (in our testing, it took 3 minutes). You will be
 redirected back to the Portal dashboard where a tile will appear to indicate
 that deployment has begun.
+
+    ![Vm Summary](screenshots/0.4.8.png)
+
 1. Do a happy dance because you just created your first RHEL VM on Azure!
 
 ### 0.5: Clean up resources (estimated time: 2 minutes)
@@ -101,10 +117,22 @@ during the lab. Azure allows for quick deletion of resources grouped together
 through the idea of Resource Groups.
 
 1. From the left side of the Portal, click on "Resource groups"
+
+    ![Resource groups](screenshots/0.5.1.png)
+
 1. Select the Resource Group name that you entered in during your VM creation
+
+    ![Select resource group](screenshots/0.5.2.png)
+
 1. Click on the "Delete resource group" button
+
+    ![Delete resource group](screenshots/0.5.3.png)
+
 1. Type in the Resource Group name in the text box to tell Azure you're really
 sure about deleting it, then click Delete.
+
+    ![Type resource group](screenshots/0.5.4.png)
+
 1. You're done with the Prework!
 
 __*Stop here now that you're done the Prework. Everything that follows will
