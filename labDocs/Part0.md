@@ -9,20 +9,23 @@ the time-consuming "first run" processes happen for your Azure account before
 the lab and not during the lab. This will allow us to focus lab time on the
 intended lab content. Please complete ALL of Section 0 before coming to the lab.
 
-**IMPORTANT NOTE:** You must email <openshiftrunsonazure@microsoft.com> for an Azure Pass
-as part of this prework. Send an email with your first and last name to
-<openshiftrunsonazure@microsoft.com> requesting that you be provisioned an Azure
-Pass and you will receive one within 24 hours. Seriously, stop reading this and
-email us RIGHT NOW! We promise to respond as soon as possible, but we sometimes
+Goal of this part:
+* Create a Microsoft account (or use an existing one)
+* Obtain an AzurePass code
+* Redeem the AzurePass code for purchasing an Azure subscription
+* Provision a RHEL VM in Azure via Azure portal
+
+
+**IMPORTANT NOTE:** You must [complete survey](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6jGSD76aHBMh0VbmEsVGadUODQ0VTFOVkxEQ1kwREE2ODlEV1JENzdLRC4u) to receieve an Azure Pass. If you are unable to use the survey, please <a href="mailto:openshiftrunsonazure@microsoft.com?Subject=AzurePass request">contact us via email</a> for an Azure Pass as part of this prework. After completing the survey or emailing us you should receive an AzurePass code within 1 business day. Seriously, stop reading this and
+do it RIGHT NOW! We promise to respond as soon as possible, but we sometimes
 sleep so we might not respond as quickly to 3am emails. Once you have that pass,
 you may complete the rest of the prework.
 
 ### 0.1: Signing up for Azure (estimated time: 5 minutes)
-You have now presumably received an Azure Pass from us. This pass contains
-$250USD of credit for Azure services and is good for 1 month. Any unused credit
+You have now presumably received an Azure Pass from us. This is a code which you should be able to redeem to obtain $250USD of credit for Azure services and is good for 1 month. Any unused credit
 at the end of the month will expire and all paid services will be stopped. You
-will have the option of converting the Pass to one of the paid options at
-the expiration of the Pass, or you can just let it expire. Your choice!
+will have the option of converting your Azure Pass susbcription to one of the paid options at
+the expiration time, or you can just let it expire.
 
 You will need a Microsoft Account to sign up for the Azure Pass. The Microsoft
 Account is required to access Azure services.
@@ -33,12 +36,14 @@ Account is required to access Azure services.
 > @live.com email address, then you probably have a Microsoft Account. If you
 > don't have a Microsoft account, go to (https://account.microsoft.com) and sign
 > up for an account there.
+>
+> Few notes:
+> * you can use (almost) ANY email address to create a new Microsoft account, you don't need to get an outlook.com email address unless you want to during the creation process
+> * we recommend using a Microsoft account vs. so-called Organizational account (aka "school or work account") for this lab
 
-Once you have a Microsoft account, you will need to sign up for Azure. To do this,
-go to (https://azure.microsoft.com/free), select "Start Free", and follow the
-instructions there.
+Once you have a Microsoft account, you will need to sign up for Azure. If you never had a Free trial account on Azure you can go to (https://azure.microsoft.com/free), select "Start Free", and follow the instructions there. For this lab we will be using AzurePass instead of Free Trial.
 
-### 0.2: Redeeming an Azure Subscription using your Azure Pass (estimated time: 15 minutes)
+### 0.2: Redeeming Azure Pass for an Azure Subscription (estimated time: 15 minutes)
 The Azure Pass is a special code that gives you an Azure subscription very
 similar to the Azure Free Trial. The Azure Pass does NOT require a credit card
 to redeem.
@@ -48,14 +53,20 @@ Once you have the code, start the Azure Pass redemption process at
 and follow the steps there. Further instructions are available at
 (https://www.microsoftazurepass.com/Home/HowTo).
 
+>NOTE: 
+> Ensure you are redeeming the AzurePass code under a correct Microsoft account. Start "in-private", "incognito" browser session if you are unsure.
+
 ### 0.3: Start Cloud Shell for the first time (estimated time: 2 minutes)
 In the lab, we will be using the Azure Cloud Shell as our primary means of
 deployment. For prework, you will merely open Cloud Shell for the first time.
 Doing so will ensure that you have Cloud Shell properly set up in your Azure
 Account.
 
-Once you have signed up for Azure and redeemed your Azure Pass, visit
-(https://shell.azure.com). When prompted, select
+Once you have signed up for Azure and redeemed your Azure Pass, go to (http://portal.azure.com) and click on the Shell icon on top of the portal page
+
+![sd](screenshots/0.3.1.png)
+
+When prompted, select
 Bash as your shell of choice. Once your Cloud Shell instance has loaded, feel
 free to close it as you have completed this step now. Or play around with it if
 you so choose :smiley:.
