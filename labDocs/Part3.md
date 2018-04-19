@@ -128,7 +128,7 @@ this once.
     ```
     * If the restart fails, try entering this command use the output to help debug:
     ```bash
-        > journalctl -b -el --unit=origin-master-api.service`
+        > journalctl -b -el --unit=origin-master-api.service
     ```
 
 #### 3.1.4: Do a happy dance
