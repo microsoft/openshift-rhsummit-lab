@@ -82,10 +82,10 @@ navigating to (https://portal.azure.com).
 
     ![Azure Portal Create a resource](screenshots/0.4.1.png)
 
-1. Search for "RHEL 7.4" in the search box
-1. Select "Red Hat Enterprise Linux 7.4"
+1. Search for "RHEL 7.5" in the search box
+1. Select "Red Hat Enterprise Linux 7.5"
 
-    ![RHEL 7.4](screenshots/0.4.3.png)
+    ![RHEL 7.5](screenshots/0.4.3.png)
 
 1. In the dropdown, select "Resource Manager" as the deployment model. You will
 be taken to the Create virtual machine options
