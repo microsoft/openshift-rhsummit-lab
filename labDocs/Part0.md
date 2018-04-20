@@ -9,7 +9,7 @@ the time-consuming "first run" processes happen for your Azure account before
 the lab and not during the lab. This will allow us to focus lab time on the
 intended lab content. Please complete ALL of Section 0 before coming to the lab.
 
-Goals of this section:
+### Goals of this section:
 * Create a Microsoft account (or use an existing one)
 * Obtain an Azure Pass code
 * Redeem the Azure Pass code for purchasing an Azure subscription
@@ -82,46 +82,43 @@ navigating to (https://portal.azure.com).
 
     ![Azure Portal Create a resource](screenshots/0.4.1.png)
 
-1. Search for "RHEL 7.4" in the search box
-1. Select "Red Hat Enterprise Linux 7.4"
+1. Search for "Red Hat" in the search box
+1. Select "Red Hat Enterprise Linux 7.5"
 
-    ![RHEL 7.4](screenshots/0.4.3.png)
+    ![RHEL 7.5](screenshots/0.4.3.png)
 
-1. In the dropdown, select "Resource Manager" as the deployment model. You will
-be taken to the Create virtual machine options
+1. Click Create to proceed
 
     ![Resource Manager](screenshots/0.4.4.png)
 
 1. In the "Configure basic settings" step, enter the following:
     1. Name: Any arbitrary name
     1. User name: Any arbitrary username
-    1. Authentication type: Password, and choose a password of your liking
+    1. Authentication type: SSH key or Password, as you prefer. If you choose SSH key you can generate a pair in the Cloud Shell which is beyond the scope of this quick intro. Choose and type the password if you just want to move on.
     1. Subscription: Ensure this has selected the subscription you have redeemed
     with your Azure Pass.
-    1. Resource group: Choose "Create new", and give it any arbitrary name
-    1. Location: West US 2
+    1. Resource group: Choose "Create new", and give it a name
+    1. Location: pick one from the list available to you and note what other regions are available in your Azure Pass subscription
     1. Click "OK"
 
     ![Configure basic settings](screenshots/0.4.5.png)
 
-1. In the "Choose a size" step, choose B1s as your VM size (you are free to
-spin up a larger VM size, but please note that this might mean that you don't
-have enough remaining credits to do the actual lab). Once you have selected B1s,
-click the "Select" button.
+1. In the "Choose a size" step, choose any 1-core VM size, e.g. Standard_DS1 (you are free to
+spin up a larger VM sizes, but please make sure you do not use up all your credits BEFORE the actual lab). Delete the resource group after you are done testing.
 
     ![VM Size](screenshots/0.4.6.png)
 
 1. In the "Configure optional features" step, you don't have to change anything.
 Read it over if you would like, and click "OK".
 1. In the Summary step, you can view a summary of the VM you are about to spin up.
-Have a look and ensure you like what you see, then click "Create". Creation will
-only take a few minutes (in our testing, it took 3 minutes). You will be
-redirected back to the Portal dashboard where a tile will appear to indicate
+Have a look and ensure you like what you see, then click "Create". The first time VM creation will
+only a few minutes as services are being enabled for the first time for your subscription. You will be redirected back to the Portal dashboard where a tile will appear to indicate
 that deployment has begun.
 
     ![Vm Summary](screenshots/0.4.8.png)
 
 1. Do a happy dance because you just created your first RHEL VM on Azure!
+1. You can SSH into the VM from Cloud Shell or from outside of Azure (assuming you kept all default options)
 
 ### 0.5: Clean up resources (estimated time: 2 minutes)
 Remember when we told you above that your Azure Pass only contains $250USD of
