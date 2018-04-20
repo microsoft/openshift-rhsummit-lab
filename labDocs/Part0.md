@@ -104,7 +104,7 @@ navigating to (https://portal.azure.com).
     ![Configure basic settings](screenshots/0.4.5.png)
 
 1. In the "Choose a size" step, choose any 1-core VM size, e.g. Standard_DS1 (you are free to
-spin up a larger VM sizes, but please make sure you do not use up all your credits BEFORE the actual lab). Delete the resource group after you are done testing.
+spin up larger VM sizes, but please make sure you do not use up all your credits BEFORE the actual lab).
 
     ![VM Size](screenshots/0.4.6.png)
 
