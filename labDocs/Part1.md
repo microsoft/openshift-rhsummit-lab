@@ -2,11 +2,13 @@
 ### 1.0: Open cloud shell and log in with your Azure account you created in the Prework
 In case you forgot, here's a helpful link: (https://shell.azure.com)
 
-### 1.1: Create a new Resource Group with `az group create`
-This resource group will be used to host your Azure key vault. You will deploy a
-separate resource group for your OpenShift cluster resources.
+### 1.1: Create new Resource Groups with `az group create`
+You will create 2 resource groups. One resource group will be used to host your
+Azure key vault and the other will be used to host your OpenShift cluster resources.
 ```bash
 > az group create --name <KEYVAULT_RESOURCE_GROUP_NAME> --location westus2
+
+> az group create --name <RESOURCE_GROUP_NAME> --location westus2
 ```
 **Pro Tip:** You can be even lazier with what you type in the CLI. Examples include:
   1. The `--name` argument can be shortened to just `-n`
@@ -45,6 +47,12 @@ Your output will look something like this:
 }
 ```
 **Notes:**
+  * Save the appId field from the output for later. You will need it. If you
+  forget to save it and now see this line because you did a Ctrl+F for 'appId' from a
+  later step, you can get the app id from the Azure Portal.
+    * On the left, click on Azure Active Directory
+    * Click on App Registrations in the blade that pops up, and find the appId
+    corresponding to the Service Principal you created earlier
   * Azure CLI commands are sorted hierarchically. In this case, `az ad sp create-for-rbac`
   expands to "Azure -> Active Directory -> Service Principal -> Create for Role-
   Based Access".
@@ -55,7 +63,9 @@ Your output will look something like this:
 
 ### 1.5: Create your Azure Key Vault
 Create a key vault to store the SSH keys for the cluster with the az keyvault
-create command. The key vault name must be globally unique.
+create command. The key vault name must be globally unique, be between 3 and 24
+characters, and contain only letters and numbers. Use the Key Vault resource
+group you provisioned earlier for this step.
 ```bash
 > az keyvault create \
     --resource-group <KEYVAULT_RESOURCE_GROUP_NAME> \
@@ -150,7 +160,7 @@ a "changeme" string that will need to be edited.
               "value": "managed"
           },
           "openshiftClusterPrefix": {
-              "value": "changeme"     # Your cluster name here
+              "value": "changeme"     # Your cluster name here (this must have a length of at most 20 characters)
           },
           "masterInstanceCount": {
               "value": 1              # Change from 3 to 1
@@ -212,17 +222,19 @@ a "changeme" string that will need to be edited.
     ```
 
 ### 1.8: Deploy OpenShift!
-Use the Azure Resource Manager group deployment command:
+Use the Azure Resource Manager group deployment command. Note that the resource
+group you use here will be the OpenShift resource group you created earlier - NOT
+the Key Vault resource group (remember - you created 2 resource groups!)
   ```bash
   > az group deployment create \
     --resource-group <YOUR_RESOURCE_GROUP_HERE> \
     --template-file azuredeploy.local.json \
     --parameters @azuredeploy.parameters.local.json
   ```
-You are now complete this part of the lab. Deployment will take anywhere between
+You are now finished with this part of the lab. Deployment will take anywhere between
 25-40 minutes, so you may now continue onto the next part of this lab.The URL of
 the OpenShift console and the DNS name of the OpenShift master prints to the
-terminal when the deployment finishes:
+terminal when the deployment finishes. It will look something like this:
 
   ```json
   {
