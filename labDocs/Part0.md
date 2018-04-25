@@ -64,7 +64,9 @@ deployment. For prework, you will merely open Cloud Shell for the first time.
 Doing so will ensure that you have Cloud Shell properly set up in your Azure
 Account.
 
-Once you have signed up for Azure and redeemed your Azure Pass, go to (http://portal.azure.com) and click on the Shell icon on top of the portal page. You will be asked to select your account.
+Once you have signed up for Azure and redeemed your Azure Pass, go to
+(http://portal.azure.com) and click on the Shell icon on top of the portal page.
+You may be asked to select your account.
 
 ![sd](screenshots/0.3.1.png)
 
@@ -103,11 +105,18 @@ navigating to (https://portal.azure.com).
 
     ![Configure basic settings](screenshots/0.4.5.png)
 
-1. In the "Choose a size" step, choose any 1-core VM size, e.g. Standard_DS1 (you are free to
-spin up larger VM sizes, but please make sure you do not use up all your credits BEFORE the actual lab).
+1. In the "Choose a size" step, you will see a recommended VM size. For this prework,
+we recommend clicking on "View all" and selecting a 1 core size.
+
+    ![VM Size](screenshots/0.4.6-view-all.png)
+
+    Choose any 1-core VM size, e.g. B1S (you are free to spin up larger VM sizes,
+    but please make sure you do not use up all your credits BEFORE the actual lab).
+    Note that in the screenshot below, the vCPUs field has been filtered out.
+
     > You may need to click on "View all" to view the list of VM sizes
 
-    ![VM Size](screenshots/0.4.6.png)
+    ![VM Size](screenshots/0.4.6-all-sizes.png)
 
 1. In the "Configure optional features" step, you don't have to change anything.
 Read it over if you would like, and click "OK".
