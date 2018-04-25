@@ -1,5 +1,5 @@
 ## Part 0: Prework and starting with Microsoft Azure
-**Estimated time: 35 minutes**
+**Estimated time: 40 minutes**
 
 The prework for this lab will walk you through the Azure sign-up process, as
 well as the preliminary steps of setting up Cloud Shell and provisioning your
@@ -21,7 +21,7 @@ do it RIGHT NOW! We promise to respond as soon as possible, but we sometimes
 sleep so we might not respond as quickly to 3am emails. Once you have that pass,
 you may complete the rest of the prework.
 
-### 0.1: Signing up for Azure (estimated time: 5 minutes)
+### 0.1: Signing up for Azure (estimated time: 10 minutes)
 You have now presumably received an Azure Pass from us (see the important note
 above). This is a code with which you should be able to redeem to obtain $250USD
 of credit for Azure services, and it is good for 1 month. Any unused credit at
@@ -64,7 +64,7 @@ deployment. For prework, you will merely open Cloud Shell for the first time.
 Doing so will ensure that you have Cloud Shell properly set up in your Azure
 Account.
 
-Once you have signed up for Azure and redeemed your Azure Pass, go to (http://portal.azure.com) and click on the Shell icon on top of the portal page
+Once you have signed up for Azure and redeemed your Azure Pass, go to (http://portal.azure.com) and click on the Shell icon on top of the portal page. You will be asked to select your account.
 
 ![sd](screenshots/0.3.1.png)
 
@@ -105,15 +105,20 @@ navigating to (https://portal.azure.com).
 
 1. In the "Choose a size" step, choose any 1-core VM size, e.g. Standard_DS1 (you are free to
 spin up larger VM sizes, but please make sure you do not use up all your credits BEFORE the actual lab).
+    > You may need to click on "View all" to view the list of VM sizes
 
     ![VM Size](screenshots/0.4.6.png)
 
 1. In the "Configure optional features" step, you don't have to change anything.
 Read it over if you would like, and click "OK".
 1. In the Summary step, you can view a summary of the VM you are about to spin up.
-Have a look and ensure you like what you see, then click "Create". The first time VM creation will
-only a few minutes as services are being enabled for the first time for your subscription. You will be redirected back to the Portal dashboard where a tile will appear to indicate
-that deployment has begun.
+You may also have to provide a phone number before provisioning. Have a look and
+ensure you like what you see, then click "Create".
+
+    >The first time VM creation will
+    >take a few minutes as services are being enabled for the first time for your
+    >subscription. You will be redirected back to the Portal dashboard where a tile
+    >will appear to indicate that deployment has begun.
 
     ![Vm Summary](screenshots/0.4.8.png)
 
