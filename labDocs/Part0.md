@@ -29,7 +29,7 @@ the end of the month will expire and all paid services will be stopped. You will
 have the option of converting your Azure Pass susbcription to one of the paid
 options at the expiration time, or you can just let it expire.
 
-You will need a Microsoft Account to sign up for the Azure Pass. The Microsoft
+You will need a personal Microsoft Account to sign up for the Azure Pass. The Microsoft
 Account is required to access Azure services.
 
 > NOTE:
@@ -41,7 +41,7 @@ Account is required to access Azure services.
 >
 > A few notes:
 > * you can use (almost) ANY email address to create a new Microsoft account, you don't need to get an outlook.com email address unless you want to during the creation process
-> * we recommend using a Microsoft account vs. so-called Organizational account (aka "school or work account") for this lab
+> * we recommend using a personal Microsoft account vs. so-called Organizational account (aka "school or work account") for this lab
 
 Once you have a Microsoft account, you will need to sign up for Azure. If you never had a Free trial account on Azure you can go to (https://azure.microsoft.com/free), select "Start Free", and follow the instructions there. For this lab we will be using Azure Pass instead of Free Trial.
 
