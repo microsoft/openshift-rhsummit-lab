@@ -98,6 +98,10 @@ necessary Azure infrastructure components and run the setup scripts required.
 1. Go to (https://aka.ms/openshift) and clone
 the repo to your local machine (in today's lab, this can all be done within Azure
 Cloud Shell).
+```bash
+> git clone https://github.com/Microsoft/openshift-origin.git
+```
+
 1. Enter the cloned repo directory and create copies of `azuredeploy.json` and
 `azuredeploy.parameters.json`
     ```bash
