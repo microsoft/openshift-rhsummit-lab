@@ -1,4 +1,15 @@
 ## Part 1: Using Azure to deploy OpenShift Origin
+In today's lab, we will be deploying OpenShift Origin clusters. OpenShift Origin
+is an open-source upstream project of OpenShift that is community supported.
+OpenShift Container Platform is an enterprise-ready commercial version from and
+supported by Red Hat. With this version, customers purchase the necessary
+entitlements for OpenShift Container Platform and are responsible for
+installation and management of the entire infrastructure.
+
+OpenShift Container Platform requires a separate entitlement so for the purposes
+of deployment in this lab we will be using Origin. In the deployment process,
+the only difference is the extra credential needed in the deployment template.
+
 ### 1.0: Open cloud shell and log in with your Azure account you created in the Prework
 In case you forgot, here's a helpful link: (https://shell.azure.com)
 
@@ -59,7 +70,7 @@ Your output will look something like this:
   * Your SubscriptionId can be found with `az account list` (from above).
   * Your Resource Group name can be found with `az group list`.
   * The final `scopes` argument limits the scope of the Service Principal to the
-  current Resource Group. This is a generally accepted best practice.
+  current Resource Group.
 
 ### 1.5: Create your Azure Key Vault
 Create a key vault to store the SSH keys for the cluster with the az keyvault
@@ -89,7 +100,7 @@ You can use one of two ways to deploy OpenShift Origin on Azure:
 
   * You can manually deploy all the necessary Azure infrastructure components, and
 then follow the OpenShift Origin documentation.
-  * You can also use an existing Resource Manager template that simplifies the
+  * You can also use an existing Azure Resource Manager template that simplifies the
 deployment of the OpenShift Origin cluster.
 
 Today, we will be using the template to automate the deployment of all the
@@ -152,37 +163,37 @@ a "changeme" string that will need to be edited.
               "value": "https://raw.githubusercontent.com/Microsoft/openshift-origin/master/"
           },
           "masterVmSize": {
-              "value": "Standard_DS2_v2"
+              "value": "Standard_DS2_v2"  # Change from Standard_DS3_v2 to Standard_DS2_v2
           },
           "infraVmSize": {
-              "value": "Standard_DS2_v2"
+              "value": "Standard_DS2_v2"  # Change from Standard_DS3_v2 to Standard_DS2_v2
           },
           "nodeVmSize": {
-              "value": "Standard_DS2_v2"
+              "value": "Standard_DS2_v2"  # Change from Standard_DS3_v2 to Standard_DS2_v2
           },
           "storageKind": {
               "value": "managed"
           },
           "openshiftClusterPrefix": {
-              "value": "changeme"     # Your cluster name here (this must have a length of at most 20 characters)
+              "value": "changeme"         # Your cluster name here (length at most 20 characters)
           },
           "masterInstanceCount": {
-              "value": 1              # Change from 3 to 1
+              "value": 1                  # Change from 3 to 1
           },
           "infraInstanceCount": {
-              "value": 1              # Change from 2 to 1
+              "value": 1                  # Change from 2 to 1
           },
           "nodeInstanceCount": {
-              "value": 2              # Change from 1 to 2
+              "value": 2                  # Change from 1 to 2
           },
           "dataDiskSize": {
               "value": 128
           },
           "adminUsername": {
-              "value": "changeme"     # Your admin name here
+              "value": "changeme"         # Your admin name here
           },
           "openshiftPassword": {
-              "value": "changeme"     # Your password here
+              "value": "changeme"         # Your password here
           },
           "enableMetrics": {
               "value": "false"
@@ -194,31 +205,31 @@ a "changeme" string that will need to be edited.
               "value": "false"
           },
           "sshPublicKey": {
-              "value": "changeme"     # Add your SSH public key here
+              "value": "changeme"         # Add your SSH public key here
           },
           "keyVaultResourceGroup": {
-              "value": "changeme"     # Add your Key Vault resource group nanme here
+              "value": "changeme"         # Add your Key Vault resource group nanme here
           },
           "keyVaultName": {
-              "value": "changeme"     # Add the name of your Key Vault here
+              "value": "changeme"         # Add the name of your Key Vault here
           },
           "keyVaultSecret": {
-              "value": "changeme"     # Add the name of your  Key Vault Secret here
+              "value": "changeme"         # Add the name of your  Key Vault Secret here
           },
           "enableAzure": {
-              "value": "true"         # Change this from false to true
+              "value": "true"             # Change this from false to true
           },
           "aadClientId": {
-              "value": "changeme"     # Add the AppId you saved from earlier here
+              "value": "changeme"         # Add the AppId you saved from earlier here
           },
           "aadClientSecret": {
-              "value": "changeme"     # Add the password for your AAD Service Principal here
+              "value": "changeme"         # Add the password for your AAD Service Principal here
           },
           "defaultSubDomainType": {
               "value": "nipio"
           },
           "defaultSubDomain": {
-              "value": "changeme"     # If you selected nipio above, this will be ignored
+              "value": "changeme"         # If you selected nipio above, this will be ignored
           }
       }
     }
