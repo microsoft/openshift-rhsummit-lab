@@ -208,7 +208,7 @@ a "changeme" string that will need to be edited.
               "value": "changeme"         # Add your SSH public key here
           },
           "keyVaultResourceGroup": {
-              "value": "changeme"         # Add your Key Vault resource group nanme here
+              "value": "changeme"         # Add your Key Vault resource group name here
           },
           "keyVaultName": {
               "value": "changeme"         # Add the name of your Key Vault here

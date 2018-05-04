@@ -68,11 +68,15 @@ Once you have signed up for Azure and redeemed your Azure Pass, go to
 (http://portal.azure.com) and click on the Shell icon on top of the portal page.
 You may be asked to select your account.
 
-![sd](screenshots/0.3.1.png)
+![Cloud Shell button](screenshots/0.3.1.png)
 
-When prompted, select Bash as your shell of choice. Once your Cloud Shell
-instance has loaded, feel free to close it as you have completed this step now.
-Or play around with it if you so choose :smiley:.
+When prompted, select Bash as your shell of choice. When prompted, click 'Create'
+on the storage mounting dialog.
+
+![Cloud Shell button](screenshots/0.3.2.png)
+
+Once your Cloud Shell instance has loaded, feel free to close it as you have
+completed this step now. Or play around with it if you so choose :smiley:.
 
 ### 0.4: Provision a RHEL VM through the Portal UI (estimated time: 10 minutes)
 The final prework step is to provision a RHEL VM using the Azure Portal UI. This
