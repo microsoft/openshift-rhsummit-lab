@@ -8,6 +8,8 @@
 
 ## [Part 1: Using Azure to deploy OpenShift Origin](Part1.md)
 
+## [Part 1a: Observing and troublshooting OpenShift Deployment](Part1a.md)
+
 ## [Part 2: Using OpenShift on Azure](Part2.md)
 
 ## [Part 3: Advanced OpenShift topics](Part3.md)
