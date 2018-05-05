@@ -121,7 +121,7 @@ Cloud Shell).
     > cp azuredeploy.parameters.json azuredeploy.parameters.local.json
     ```
 1. Use your preferred text editor to make adjustments to both files. We will be
-updating `azuredeploy.local.json` to allow for fewer Master nodes. This is due
+updating `azuredeploy.local.json` to allow for fewer master and infra nodes. This is due
 to a 10 core constraint in the Azure Pass. The bulk of our editing work will be
 in `azuredeploy.parameters.local.json`. There are a number of fields tagged with
 a "changeme" string that will need to be edited.

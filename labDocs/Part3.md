@@ -18,7 +18,7 @@ information.
 1. Home page (OpenShift console URL)
     * You can retrieve this using:
         ```bash
-        > az group deployment list \
+        az group deployment list \
           --resource-group <RESOURCE_GROUP_NAME> \
           --query [].properties.outputs \
           --output=json
@@ -30,12 +30,15 @@ information.
       `https://<OPENSHIFT_MASTER_PUBLIC_URL>/oauth2callback/<APP_DISPLAY_NAME>`
     * This URL will look something like:
       `https://masterdnsmtnhg3c6h4ji2.westus2.cloudapp.azure.com:8443/oauth2callback/openshiftServicePrincipalName`
+1. Tenant Id
+    * You can retrieve this with:
+      `az account show`
 1. Password
 
 #### 3.1.2: Create an App Registration
 Create an AAD Application Registration with the following command:
 
-    > az ad app create \
+    az ad app create \
         --display-name <YOUR_DISPLAY_NAME_HERE> \
         -- homepage <HOMEPAGE_FROM_ABOVE> \
         -- reply-urls <REPLY-URL_FROM_ABOVE> \
@@ -72,7 +75,7 @@ next section
 1. Select "Done"
 
 #### 3.1.4: Configure Master Nodes
-In general, you will have to do this step for every master node you have created.
+*NOTE:* In general, you will have to do this step for every master node you have created.
 However, since we only have 1 master node for this lab, you will only have to do
 this once.
 
@@ -119,18 +122,23 @@ this once.
                 email:
                 - email
               urls:
-                authorize: https://login.microsoftonline.com/<tenantId>/oauth2/  authorize
+                authorize: https://login.microsoftonline.com/<tenantId>/oauth2/authorize
                 token: https://login.microsoftonline.com/<tenantId>/oauth2/token
 1. Restart OpenShift master services
+###OpenShift Origin:
     ```bash
-        > sudo systemctl restart origin-master-api
-        > sudo systemctl restart origin-master-controllers
+        sudo systemctl restart origin-master-api
+        sudo systemctl restart origin-master-controllers
     ```
     * If the restart fails, try entering this command use the output to help debug:
     ```bash
-        > journalctl -b -el --unit=origin-master-api.service
+        journalctl -b -el --unit=origin-master-api.service
     ```
-
+###OpenShift Container Platform:
+    ```bash
+        sudo systemctl restart atomic-openshift-master-api
+        sudo systemctl restart atomic-openshift-master-controllers
+    ```
 #### 3.1.4: Do a happy dance
 You are done configuring AAD for your OpenShift deployment! Go to your OpenShift
 URL and notice that the login screen now shows you two options to log in.
