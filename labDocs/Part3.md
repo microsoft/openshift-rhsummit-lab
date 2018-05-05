@@ -4,10 +4,16 @@
 Azure Active Directory is Microsoft’s multi-tenant, cloud-based
 directory and identity management service that combines core directory services,
 application access management, and identity protection into a single solution.
+Integrating AAD into your OpenShift cluster allows you to seamlessly enable your
+entire AAD to log into OpenShift without having to go through the process of
+setting up additional users.
+
+In this section, you will create a new AAD Application Registration and update
+your OpenShift cluster to use that Application Registration for AAD authentication.
 
 #### 3.1.1: Collect basic information
 After you deploy an OpenShift cluster, you can configure single sign-on using
-Azure Active Directory (AAD). To do this, you will need to collect 5 pieces of
+Azure Active Directory (AAD). To do this, you will need to collect 6 pieces of
 information.
 
 1. Display name (App registration name)
@@ -75,7 +81,7 @@ next section
 1. Select "Done"
 
 #### 3.1.4: Configure Master Nodes
-*NOTE:* In general, you will have to do this step for every master node you have created.
+**NOTE:** In general, you will have to do this step for every master node you have created.
 However, since we only have 1 master node for this lab, you will only have to do
 this once.
 
@@ -84,7 +90,7 @@ this once.
     ```bash
       > ssh -p 2200 <YOUR_ADMIN_USERNAME>@<MASTER_NODE_URL>
     ```
-1. Open `/etc/origin/master/master-config.yaml` with your favorite text editor
+1. Open `/etc/origin/master/master-config.yaml` with your favorite text editor (requires root)
 1. Find the section that looks like this:
     ```bash
         oauthConfig:
@@ -124,21 +130,68 @@ this once.
               urls:
                 authorize: https://login.microsoftonline.com/<tenantId>/oauth2/authorize
                 token: https://login.microsoftonline.com/<tenantId>/oauth2/token
+    ```
+    - Your resulting file will look like this:
+    ```
+        oauthConfig:
+          assetPublicURL: https://masterdns343khhde.westus.cloudapp.azure.com:8443/console/
+          grantConfig:
+            method: auto
+          identityProviders:
+          - challenge: true
+            login: true
+            mappingMethod: claim
+            name: htpasswd_auth
+            provider:
+              apiVersion: v1
+              file: /etc/origin/master/htpasswd
+              kind: HTPasswdPasswordIdentityProvider
+          - name: <APP_REGISTRATION_NAME_FROM_ABOVE>
+            challenge: false
+            login: true
+            mappingMethod: claim
+            provider:
+              apiVersion: v1
+              kind: OpenIDIdentityProvider
+              clientID: <APP_ID_FROM_ABOVE>
+              clientSecret: <PASSWORD_FROM_ABOVE>
+              claims:
+                id:
+                - sub
+                preferredUsername:
+                - unique_name
+                name:
+                - name
+                email:
+                - email
+              urls:
+                authorize: https://login.microsoftonline.com/<tenantId>/oauth2/authorize
+                token: https://login.microsoftonline.com/<tenantId>/oauth2/token
+    ```
 1. Restart OpenShift master services
-###OpenShift Origin:
+    - OpenShift Origin:
     ```bash
         sudo systemctl restart origin-master-api
         sudo systemctl restart origin-master-controllers
     ```
-    * If the restart fails, try entering this command use the output to help debug:
-    ```bash
-        journalctl -b -el --unit=origin-master-api.service
-    ```
-###OpenShift Container Platform:
+
+    - OpenShift Container Platform with multiple masters:
     ```bash
         sudo systemctl restart atomic-openshift-master-api
         sudo systemctl restart atomic-openshift-master-controllers
     ```
+
+    - OpenShift Container Platform with a single master:
+    ```bash
+        sudo systemctl restart atomic-openshift-master
+    ```
+
+    * If the restart fails, try entering this command use the output to help debug:
+
+    ```bash
+        journalctl -b -el --unit=origin-master-api.service
+    ```
+
 #### 3.1.4: Do a happy dance
 You are done configuring AAD for your OpenShift deployment! Go to your OpenShift
 URL and notice that the login screen now shows you two options to log in.

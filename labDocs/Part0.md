@@ -164,6 +164,13 @@ sure about deleting it, then click Delete.
 
 1. You're done with the Prework!
 
+### 0.6: Download OpenShift CLI (estimated time: varies by internet connection)
+Because we are going to be using OpenShift CLI tools during the lab, you may want
+to download them beforehand so you don't spend time during the lab struggling with
+slow bandwidth as everyone else downloads the same 40mb package as you.
+
+[Download OCP CLI tools here](https://access.redhat.com/downloads/content/290/ver=3.9/rhel---7/3.9.25/x86_64/product-software)
+
 __*Stop here now that you're done the Prework. Everything that follows will
 be completed during the Red Hat Summit lab itself.*__
 ---

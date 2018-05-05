@@ -93,7 +93,7 @@ az ad sp create-for-rbac --name OpenShiftSPName --skip-assignment --output=jsonc
 ```
 
 **Note**
-We are explicitly skipping the role assignment and we use auto-generated passowrd. If you prefer, you can specify explicit passowrd instead.
+We are explicitly skipping the role assignment and we use auto-generated password. If you prefer, you can specify explicit password instead.
 
 Your output will look something like this:
 ```json
@@ -256,28 +256,28 @@ a "changeme" string that will need to be edited.
             "value": "ssh-rsa AAAA...OJa3pY+B+92...-v1cpk"    # SSH public key matching what you put in the keyvault
         },
         "keyVaultResourceGroup": {
-            "value": "KeyvaultRG"       # Add your Key Vault resource group name here
+            "value": "KeyvaultRG"                             # Add your Key Vault resource group name here
         },
         "keyVaultName": {
-            "value": "KeyvaultOpenShift1001"    # Add the name of your Key Vault here
+            "value": "KeyvaultOpenShift1001"                  # Add the name of your Key Vault here
         },
         "keyVaultSecret": {
-            "value": "OpenShiftPK"      # Add the name of your  Key Vault Secret here
+            "value": "OpenShiftPK"                            # Add the name of your  Key Vault Secret here
         },
         "enableAzure": {
-            "value": "true"             # Check this is set to true
+            "value": "true"                                   # Check this is set to true
         },
         "aadClientId": {
-            "value": "e0d1cd93-93d3-40af-8bf7-63edac400153" # Add the AppId you saved earlier
+            "value": "e0d1cd93-93d3-40af-8bf7-63edac400153"   # Add the AppId you saved earlier
         },
         "aadClientSecret": {
-            "value": "5d40e723-78c8-4726-ba04-dccd0a592909" # Add the password for your Service Principal
+            "value": "5d40e723-78c8-4726-ba04-dccd0a592909"   # Add the password for your Service Principal
         },
         "defaultSubDomainType": {
             "value": "nipio"
         },
         "defaultSubDomain": {
-            "value": "changeme"         # If you selected nipio above, this will be ignored
+            "value": "changeme"                               # If you selected nipio above, this will be ignored
         }
     }
 }
