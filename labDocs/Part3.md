@@ -17,10 +17,10 @@ Azure Active Directory (AAD). To do this, you will need to collect 6 pieces of
 information.
 
 1. Display name (App registration name)
-    * You can retrieve this from the Azure Portal by clicking on Azure Active
-      Directory and then on App Registrations
+    * Whatever you want to name your App registration, for example, OpenShiftAzureAD
 1. App Id
     * You can also retrieve this from App Registrations in the Azure Portal
+    * This will come from the output of the next command you run. Save it!
 1. Home page (OpenShift console URL)
     * You can retrieve this using:
         ```bash
@@ -29,6 +29,8 @@ information.
           --query [].properties.outputs \
           --output=json
         ```
+    * You can also view this from the Azure Portal
+        * Go to your Resource Groups -> Deployments -> Outputs and copy the OpenShift Console URL
 1. Identifier URI (Openshift console URL)
     * See above
 1. Reply URL (You will need your Master public URL and App registration name)
@@ -50,6 +52,8 @@ Create an AAD Application Registration with the following command:
         -- reply-urls <REPLY-URL_FROM_ABOVE> \
         --identifier-uris <IDENTIFIER-URI_FROM_ABOVE> \
         --password <PASSWORD_FROM_ABOVE>
+
+> Save the appID from the output for later
 
 #### 3.1.3: Add App Permissions from the Azure Portal
 We will now grant permissions to the App registration that you created.
