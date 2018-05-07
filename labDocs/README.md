@@ -16,7 +16,7 @@ Visit this if you are having trouble with your deployment.
 ## [Part 2: Using OpenShift on Azure](Part2.md)
 
 ## [Part 3: Advanced OpenShift topics](Part3.md)
-Azure AD, Open Service Brokers
+Azure AD Integration
 
 ## [Resources](Resources.md)
 

@@ -175,25 +175,25 @@ this once.
 1. Restart OpenShift master services
     - OpenShift Origin:
     ```bash
-        sudo systemctl restart origin-master-api
-        sudo systemctl restart origin-master-controllers
+    sudo systemctl restart origin-master-api
+    sudo systemctl restart origin-master-controllers
     ```
 
     - OpenShift Container Platform with multiple masters:
     ```bash
-        sudo systemctl restart atomic-openshift-master-api
-        sudo systemctl restart atomic-openshift-master-controllers
+    sudo systemctl restart atomic-openshift-master-api
+    sudo systemctl restart atomic-openshift-master-controllers
     ```
 
     - OpenShift Container Platform with a single master:
     ```bash
-        sudo systemctl restart atomic-openshift-master
+    sudo systemctl restart atomic-openshift-master
     ```
 
     * If the restart fails, try entering this command use the output to help debug:
 
     ```bash
-        journalctl -b -el --unit=origin-master-api.service
+    journalctl -b -el --unit=origin-master-api.service
     ```
 
 #### 3.1.4: Do a happy dance
