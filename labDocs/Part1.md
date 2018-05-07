@@ -316,4 +316,4 @@ az group deployment list \
 
 Or via Azure portal on by clicking on the deployments associated with this resource group.
 
-[Back to TOC](README.md) | [Troubleshooting](Part1a.md) | [Using OpenShift](Part2.md)
+[Back to TOC](../README.md) | [Troubleshooting](Part1a.md) | [Using OpenShift](Part2.md)

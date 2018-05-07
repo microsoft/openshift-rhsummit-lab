@@ -201,3 +201,5 @@ You are done configuring AAD for your OpenShift deployment! Go to your OpenShift
 URL and notice that the login screen now shows you two options to log in.
 
 ![AAD Authentication enabled in OpenShift login](screenshots/3.1.4.png)
+
+[Back to TOC](../README.md) | [Resources](Resources.md)
