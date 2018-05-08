@@ -25,7 +25,9 @@ az role assignment create \
 ```bash
 az vm list-usage --location WestUS2
 ```
+
 Check that you have at least 8 cores available. 
+
 
 5. Resubmit the deployment adjusting the group name
 ```bash
@@ -34,5 +36,6 @@ az group deployment create \
   --parameters @azuredeploy.parameters.local.json \
   --resource-group OpenShiftRG2
 ```
+
 
 [Back to TOC](../README.md) | [Using OpenShift](Part2.md)

@@ -173,6 +173,6 @@ slow bandwidth as everyone else downloads the same 40mb package as you.
 
 __*Stop here now that you're done the Prework. Everything that follows will
 be completed during the Red Hat Summit lab itself.*__
----
 
 [Back to TOC](../README.md) | [Deploying OpenShift](Part1.md)
+

@@ -176,16 +176,19 @@ git clone https://github.com/Microsoft/openshift-origin.git
 
 Enter the cloned repo directory and create copies of `azuredeploy.json` and
 `azuredeploy.parameters.json`
+
     ```bash
     cd openshift-origin
     cp azuredeploy.json azuredeploy.local.json
     cp azuredeploy.parameters.json azuredeploy.parameters.local.json
     ```
-1. Use your preferred text editor to make adjustments to both files. We will be
-updating `azuredeploy.local.json` to allow for fewer master and infra nodes. This is due
-to a 10 core constraint in the Azure Pass. The bulk of our editing work will be
-in `azuredeploy.parameters.local.json`. There are a number of fields tagged with
-a "changeme" string that will need to be edited.
+
+1. Use your preferred text editor to make adjustments to `azuredeploy.parameters.local.json`.
+We will be updating this file to allow for fewer master and infra nodes. This is due to a
+10 core constraint in the Azure Pass. In addition, there are a number of fields tagged with
+a "changeme" string that will need to be edited. These set various parameters for
+the OpenShift Deployment.
+
 #### Changes required for `azuredeploy.local.json`:
 
 ```bash
@@ -262,7 +265,7 @@ a "changeme" string that will need to be edited.
             "value": "KeyvaultOpenShift1001"                  # Add the name of your Key Vault here
         },
         "keyVaultSecret": {
-            "value": "OpenShiftPK"                            # Add the name of your  Key Vault Secret here
+            "value": "OpenShiftPK"                            # Add the name of your Key Vault Secret here
         },
         "enableAzure": {
             "value": "true"                                   # Check this is set to true
