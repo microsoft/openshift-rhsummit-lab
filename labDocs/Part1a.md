@@ -25,7 +25,7 @@ az role assignment create \
 ```bash
 az vm list-usage --location WestUS2
 ```
-Check that you have at least 8 cores available. 
+Check that you have at least 8 cores available.
 
 5. Resubmit the deployment adjusting the group name
 ```bash

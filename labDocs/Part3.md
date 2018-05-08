@@ -37,11 +37,12 @@ information.
     * This is constructed as follows:
       `https://<OPENSHIFT_MASTER_PUBLIC_URL>/oauth2callback/<APP_DISPLAY_NAME>`
     * This URL will look something like:
-      `https://masterdnsmtnhg3c6h4ji2.westus2.cloudapp.azure.com:8443/oauth2callback/openshiftServicePrincipalName`
+      `https://masterdnsmtnhg3c6h4ji2.westus2.cloudapp.azure.com/oauth2callback/openshiftServicePrincipalName`
 1. Tenant Id
     * You can retrieve this with:
       `az account show`
 1. Password
+  * This is the password you will be using for the Azure AD Service Principal
 
 #### 3.1.2: Create an App Registration
 Create an AAD Application Registration with the following command:
@@ -92,85 +93,85 @@ this once.
 1. Using the URL from earlier, SSH into the master node
 
     ```bash
-      > ssh -p 2200 <YOUR_ADMIN_USERNAME>@<MASTER_NODE_URL>
+    ssh -p 2200 <YOUR_ADMIN_USERNAME>@<MASTER_NODE_URL>
     ```
 1. Open `/etc/origin/master/master-config.yaml` with your favorite text editor (requires root)
 1. Find the section that looks like this:
-    ```bash
-        oauthConfig:
-          assetPublicURL: https://masterdns343khhde.westus.cloudapp.azure.com:8443/console/
-          grantConfig:
-            method: auto
-          identityProviders:
-          - challenge: true
-            login: true
-            mappingMethod: claim
-            name: htpasswd_auth
-            provider:
-              apiVersion: v1
-              file: /etc/origin/master/htpasswd
-              kind: HTPasswdPasswordIdentityProvider
+    ```
+    oauthConfig:
+      assetPublicURL: https://masterdns343khhde.westus.cloudapp.azure.com:8443/console/
+      grantConfig:
+        method: auto
+      identityProviders:
+      - challenge: true
+        login: true
+        mappingMethod: claim
+        name: htpasswd_auth
+        provider:
+          apiVersion: v1
+          file: /etc/origin/master/htpasswd
+          kind: HTPasswdPasswordIdentityProvider
     ```
 1. Add the following lines immediately after:
-    ```bash
-          - name: <APP_REGISTRATION_NAME_FROM_ABOVE>
-            challenge: false
-            login: true
-            mappingMethod: claim
-            provider:
-              apiVersion: v1
-              kind: OpenIDIdentityProvider
-              clientID: <APP_ID_FROM_ABOVE>
-              clientSecret: <PASSWORD_FROM_ABOVE>
-              claims:
-                id:
-                - sub
-                preferredUsername:
-                - unique_name
-                name:
-                - name
-                email:
-                - email
-              urls:
-                authorize: https://login.microsoftonline.com/<tenantId>/oauth2/authorize
-                token: https://login.microsoftonline.com/<tenantId>/oauth2/token
+    ```
+    - name: <APP_REGISTRATION_NAME_FROM_ABOVE>
+      challenge: false
+      login: true
+      mappingMethod: claim
+      provider:
+        apiVersion: v1
+        kind: OpenIDIdentityProvider
+        clientID: <APP_ID_FROM_ABOVE>
+        clientSecret: <PASSWORD_FROM_ABOVE>
+        claims:
+          id:
+          - sub
+          preferredUsername:
+          - unique_name
+          name:
+          - name
+          email:
+          - email
+        urls:
+          authorize: https://login.microsoftonline.com/<tenantId>/oauth2/authorize
+          token: https://login.microsoftonline.com/<tenantId>/oauth2/token
     ```
     - Your resulting file will look like this:
     ```
-        oauthConfig:
-          assetPublicURL: https://masterdns343khhde.westus.cloudapp.azure.com:8443/console/
-          grantConfig:
-            method: auto
-          identityProviders:
-          - challenge: true
-            login: true
-            mappingMethod: claim
-            name: htpasswd_auth
-            provider:
-              apiVersion: v1
-              file: /etc/origin/master/htpasswd
-              kind: HTPasswdPasswordIdentityProvider
-          - name: <APP_REGISTRATION_NAME_FROM_ABOVE>
-            challenge: false
-            login: true
-            mappingMethod: claim
-            provider:
-              apiVersion: v1
-              kind: OpenIDIdentityProvider
-              clientID: <APP_ID_FROM_ABOVE>
-              clientSecret: <PASSWORD_FROM_ABOVE>
-              claims:
-                id:
-                - sub
-                preferredUsername:
-                - unique_name
-                name:
-                - name
-                email:
-                - email
-              urls:
-                authorize: https://login.microsoftonline.com/<tenantId>/oauth2/authorize
-                token: https://login.microsoftonline.com/<tenantId>/oauth2/token
+    oauthConfig:
+      assetPublicURL: https://masterdns343khhde.westus.cloudapp.azure.com:8443/console/
+      grantConfig:
+        method: auto
+      identityProviders:
+      - challenge: true
+        login: true
+        mappingMethod: claim
+        name: htpasswd_auth
+        provider:
+          apiVersion: v1
+          file: /etc/origin/master/htpasswd
+          kind: HTPasswdPasswordIdentityProvider
+      - name: <APP_REGISTRATION_NAME_FROM_ABOVE>
+        challenge: false
+        login: true
+        mappingMethod: claim
+        provider:
+          apiVersion: v1
+          kind: OpenIDIdentityProvider
+          clientID: <APP_ID_FROM_ABOVE>
+          clientSecret: <PASSWORD_FROM_ABOVE>
+          claims:
+            id:
+            - sub
+            preferredUsername:
+            - unique_name
+            name:
+            - name
+            email:
+            - email
+          urls:
+            authorize: https://login.microsoftonline.com/<tenantId>/oauth2/authorize
+            token: https://login.microsoftonline.com/<tenantId>/oauth2/token
     ```
 1. Restart OpenShift master services
     - OpenShift Origin:
