@@ -182,11 +182,33 @@ Enter the cloned repo directory and create copies of `azuredeploy.json` and
     cp azuredeploy.json azuredeploy.local.json
     cp azuredeploy.parameters.json azuredeploy.parameters.local.json
     ```
+
 1. Use your preferred text editor to make adjustments to `azuredeploy.parameters.local.json`.
 We will be updating this file to allow for fewer master and infra nodes. This is due to a
 10 core constraint in the Azure Pass. In addition, there are a number of fields tagged with
 a "changeme" string that will need to be edited. These set various parameters for
 the OpenShift Deployment.
+
+#### Changes required for `azuredeploy.local.json`:
+
+```bash
+    "masterInstanceCount": {
+        "type": "int",
+        "defaultValue": 3,
+        "allowedValues": [1,3,5],   # Change from [3,5] to [1,3,5]
+        "metadata": {
+            "description": "Number of OpenShift masters."
+        }
+    },
+    "infraInstanceCount": {
+        "type": "int",
+        "defaultValue": 2,
+        "allowedValues": [1,2,3],   # Change from [2,3] to [1,2,3]
+        "metadata": {
+            "description": "Number of OpenShift infra nodes."
+        }
+    }
+```
 
 #### Changes required for `azuredeploy.parameters.local.json`:
 ```bash
@@ -297,4 +319,4 @@ az group deployment list \
 
 Or via Azure portal on by clicking on the deployments associated with this resource group.
 
-[Back to TOC](README.md) | [Troubleshooting](Part1a.md) | [Using OpenShift](Part2.md)
+[Back to TOC](../README.md) | [Troubleshooting](Part1a.md) | [Using OpenShift](Part2.md)

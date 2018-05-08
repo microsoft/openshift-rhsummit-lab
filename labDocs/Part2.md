@@ -65,3 +65,4 @@ $ oc expose svc stock-con --port=9898
 
 You should now be able to access the stock consumer service from your browser or via `curl` using a URL of the form `http://stock-con-dok.$BASEURL/average/NYSE:RHT` with `$BASEURL` being the pubic-facing load-balancer of your OpenShift cluster.
 
+[Back to TOC](../README.md) | [Advanced topics](Part3.md)

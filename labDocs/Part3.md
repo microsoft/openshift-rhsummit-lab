@@ -44,6 +44,7 @@ information.
 1. Password
   * This is the password you will be using for the Azure AD Service Principal
 
+
 #### 3.1.2: Create an App Registration
 Create an AAD Application Registration with the following command:
 
@@ -202,3 +203,6 @@ You are done configuring AAD for your OpenShift deployment! Go to your OpenShift
 URL and notice that the login screen now shows you two options to log in.
 
 ![AAD Authentication enabled in OpenShift login](screenshots/3.1.4.png)
+
+
+[Back to TOC](../README.md) | [Resources](Resources.md)

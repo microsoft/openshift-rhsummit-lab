@@ -20,3 +20,5 @@ Azure AD Integration
 
 ## [Resources](Resources.md)
 
+Proceed to [Table of Contents](../README.md)
+
