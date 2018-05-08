@@ -50,8 +50,8 @@ Create an AAD Application Registration with the following command:
 
     az ad app create \
         --display-name <YOUR_DISPLAY_NAME_HERE> \
-        -- homepage <HOMEPAGE_FROM_ABOVE> \
-        -- reply-urls <REPLY-URL_FROM_ABOVE> \
+        --homepage <HOMEPAGE_FROM_ABOVE> \
+        --reply-urls <REPLY-URL_FROM_ABOVE> \
         --identifier-uris <IDENTIFIER-URI_FROM_ABOVE> \
         --password <PASSWORD_FROM_ABOVE>
 
