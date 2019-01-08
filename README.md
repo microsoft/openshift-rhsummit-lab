@@ -5,6 +5,8 @@
 >
 > Full completion of this prework is necessary not only to gain basic experience with Azure, but to ensure that the time-consuming "first run" processes happen for your Azure account before the lab and not during the lab. <a href="mailto:openshiftrunsonazure@microsoft.com?Subject=Prework question">Contact us</a> if you have any issues completing pre-work steps.
 
+>This repo contains materials from Red Hat Summit 2018 OpenShift lab. Free Azure credits have been provided during and shortly after the lab and are no longer available. You can run this lab with [Azure Free Trial subscritpion](http://azure.com/free) instead.
+
 ## [Part 0: Pre-work, Getting an Azure Subscription](labDocs/Part0.md)
 Redeem free Azure credits, initial account setup, OpenShift CLI download.
 
